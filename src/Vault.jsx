@@ -9,8 +9,6 @@ export const Vault = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    console.log(JSON.stringify(event))
-
     fetch(`/.netlify/functions/submitAnswer?username=${username}&password=${password}`)
       .then(response => response.json())
       .then(answer => {
