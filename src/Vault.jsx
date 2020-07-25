@@ -6,12 +6,18 @@ export const Vault = () => {
   const [isUnlocking, setIsUnlocking] = useState(false)
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    fetch("/.netlify/functions/submitAnswer")
+      .then(response => response.json())
+      .then(json => console.log(json))
+
     setIsUnlocking(true)
     setTimeout(() => {
       setIsUnlocking(false)
-      alert('Unlocked!')
+      setTimeout(() => alert('Unlocked!'), 500)
     }, 5000)
   }
+
   return (
     <div className='content'>
       <div className='header'>
