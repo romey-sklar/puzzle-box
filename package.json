@@ -12,10 +12,8 @@
   "scripts": {
     "start": "react-scripts start",
     "start:lambda": "netlify-lambda serve src/lambda",
-    "build": "run-p build:app build:lambda",
-    "build-dev": "run-p build:app-dev build:lambda",
+    "build": "run-p build:**",
     "build:app": "react-scripts build",
-    "build:app-dev": "dotenv -e .env.development react-scripts build",
     "build:lambda": "netlify-lambda build src/lambda",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
