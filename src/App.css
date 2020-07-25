@@ -32,7 +32,12 @@ b {
   animation: App-logo-spin infinite 20s linear;
 }
 
-.loginForm {
+.message {
+  color: black;
+  font-size: 40px;
+}
+
+.loginForm, .successContainer {
   width: 75%;
   padding: 30px;
   background-color: aliceblue;

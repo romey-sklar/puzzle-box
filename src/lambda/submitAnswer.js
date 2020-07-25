@@ -9,6 +9,12 @@ export async function handler(event, context) {
         })
       }
     }
+    return {
+      statusCode: 401,
+      body: JSON.stringify({
+        error: 'Incorrect username and password combination'
+      })
+    }
   } catch (err) {
     console.log(err) // output to netlify function log
     return {
