@@ -15,6 +15,7 @@
     "build": "run-p build:**",
     "build:app": "react-scripts build",
     "build:lambda": "netlify-lambda build src/lambda",
+    "postbuild": "./src/postbuildScript.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
