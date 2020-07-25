@@ -38,7 +38,7 @@ export const Vault = () => {
             </div>
             <div className='buttonGroup'>
               <div className='phButton'>
-                <Button variant="outlined">View password hint</Button>
+                <Button variant="outlined" onClick={() => { }}>View password hint</Button>
                 <div className='passwordHint'></div>
               </div>
               <Button variant="outlined" color="primary" type="submit">
