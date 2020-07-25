@@ -3,19 +3,23 @@ import logo from "./logo.svg"
 import { TextField, Button } from '@material-ui/core/'
 
 export const Vault = () => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [isUnlocking, setIsUnlocking] = useState(false)
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    fetch("/.netlify/functions/submitAnswer")
-      .then(response => response.json())
-      .then(json => console.log(json))
+    console.log(JSON.stringify(event))
 
-    setIsUnlocking(true)
-    setTimeout(() => {
-      setIsUnlocking(false)
-      setTimeout(() => alert('Unlocked!'), 500)
-    }, 5000)
+    fetch(`/.netlify/functions/submitAnswer?username=${username}&password=${password}`)
+      .then(response => response.json())
+      .then(answer => {
+        setIsUnlocking(true)
+        setTimeout(() => {
+          setIsUnlocking(false)
+          setTimeout(() => alert('Unlocked! ' + answer.msg), 500)
+        }, 5000)
+      })
   }
 
   return (
@@ -30,15 +34,22 @@ export const Vault = () => {
           <form onSubmit={handleSubmit} className='loginForm'>
             <div style={{ marginBottom: '20px' }}>
               <TextField
+                name='username'
                 required
                 id="outlined-required"
                 label="Username"
                 variant="outlined"
                 fullWidth
+                value={username}
+                onChange={event => {
+                  const { value } = event.target
+                  setUsername(value)
+                }}
               />
             </div>
             <div>
               <TextField
+                name='password'
                 required
                 id="outlined-password-input"
                 label="Password"
@@ -46,6 +57,11 @@ export const Vault = () => {
                 autoComplete="current-password"
                 variant="outlined"
                 fullWidth
+                value={password}
+                onChange={event => {
+                  const { value } = event.target
+                  setPassword(value)
+                }}
               />
             </div>
             <div className='buttonGroup'>

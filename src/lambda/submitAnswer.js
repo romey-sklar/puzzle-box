@@ -1,8 +1,13 @@
 export async function handler(event, context) {
   try {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ msg: JSON.stringify(context) })
+    if ((event.queryStringParameters.username === 'Master' &&
+      event.queryStringParameters.password === 'Brookline')) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          msg: '__  +  __!  /  __!  -  __ / __  =  __'
+        })
+      }
     }
   } catch (err) {
     console.log(err) // output to netlify function log
