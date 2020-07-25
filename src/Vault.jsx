@@ -3,8 +3,14 @@ import logo from "./logo.svg"
 import { TextField, Button } from '@material-ui/core/'
 
 export const Vault = () => {
-  const handleSubmit = () => {
-    alert("Submitted")
+  const [isUnlocking, setIsUnlocking] = useState(false)
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setIsUnlocking(true)
+    setTimeout(() => {
+      setIsUnlocking(false)
+      alert('Unlocked!')
+    }, 5000)
   }
   return (
     <div className='content'>
@@ -12,7 +18,7 @@ export const Vault = () => {
         <strong>⌘</strong> <b>Opt</b>ical <b>C</b>ybersecurity
           </div>
       <div className='body'>
-        <img src={logo} className="vault" alt="logo" />
+        <img src={logo} className={`vault ${isUnlocking ? 'unlocking' : ''}`} alt="logo" />
         <h2>Login to Access Vault</h2>
         <div>
           <form onSubmit={handleSubmit} className='loginForm'>
@@ -39,7 +45,7 @@ export const Vault = () => {
             <div className='buttonGroup'>
               <div className='phButton'>
                 <Button variant="outlined" onClick={() => { }}>View password hint</Button>
-                <div className='passwordHint'></div>
+                <div className='passwordHint hidden'>JFK's Birthplace</div>
               </div>
               <Button variant="outlined" color="primary" type="submit">
                 Submit

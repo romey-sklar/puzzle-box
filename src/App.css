@@ -28,7 +28,7 @@ b {
   height: 200px;
 }
 
-.vault .unlocking {
+.vault.unlocking {
   animation: App-logo-spin infinite 20s linear;
 }
 
@@ -40,6 +40,16 @@ b {
   border: 20px solid black;
 }
 
+.buttonGroup {
+  display: flex;
+  margin-top: 20px;
+}
+
+.phButton {
+  flex: 1;
+  display: flex;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -47,4 +57,8 @@ b {
   to {
     transform: rotate(360deg);
   }
+}
+
+.hidden {
+  display: none !important;
 }
