@@ -21,7 +21,7 @@ export const Vault = () => {
         }, 5000)
       }).catch((error) => {
         if (error.statusCode === 401) {
-          setErrorMsg(error.msg)
+          setErrorMsg(error.error || 'Incorrect username and password combination')
         } else {
           setErrorMsg('Something went wrong. Please reload page and try again or contact puzzle box support.')
         }
@@ -33,7 +33,7 @@ export const Vault = () => {
   const errorMsgModal = (
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={!!errorMsg} >
       <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Error accessing vault
+        Error
       </DialogTitle>
       <DialogContent dividers>
         {errorMsg}
@@ -86,12 +86,12 @@ export const Vault = () => {
           </div>
           <div className='buttonGroup'>
             <div className='phButton'>
-              <Button variant="outlined" onClick={() => { }}>View password hint</Button>
+              <Button variant="outlined" onClick={() => setErrorMsg('Password hint restricted')}>View password hint</Button>
               <div className='passwordHint hidden'>JFK's Birthplace</div>
             </div>
             <Button variant="outlined" color="primary" type="submit">
               Submit
-              </Button>
+            </Button>
           </div>
         </form>
       </div>
