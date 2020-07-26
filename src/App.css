@@ -72,10 +72,18 @@ b {
   display: inline-flex;
   flex-direction: row-reverse;
   color: black;
+  font-family: monospace;
+  font-size: 18px;
+}
+
+.passwordHint span {
+  width: 10px;
+  transition: width 1s;
 }
 
 .passwordHint:not(.encrypted) span:nth-child(3n+2) {
-  display: none;
+  width: 0;
+  opacity: 0;
 }
 
 .passwordHint.encrypted {
