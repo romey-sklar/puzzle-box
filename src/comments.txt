@@ -1,6 +1,7 @@
 <!--
 SOURCE CODE
 
-TODO: Fix security holes in code. Current login system is insecure, 
-but we will patch a fix soon! (08/11/2015)
+TODO: Fix security holes in password hint code. Current system is insecure if a 
+user is sophisticated enough to modify the source code and remove encryption class.
+This is a concern, especially for the Master account - but we will patch a fix soon! (08/11/2015)
 -->

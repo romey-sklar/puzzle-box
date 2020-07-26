@@ -20,8 +20,12 @@ h2 {
   padding: 20px 0;
 }
 
+.header.conditionalBold b {
+  font-weight: 600 !important;
+}
+
 b {
-  font-weight: 600;
+  font-weight: normal;
 }
 
 .vault {
@@ -64,6 +68,17 @@ b {
   }
 }
 
-.hidden {
-  display: none !important;
+.passwordHint {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  color: black;
+}
+
+.passwordHint span:nth-child(3n+2) {
+  display: none;
+}
+
+.passwordHint.encrypted {
+  flex-direction: row;
+  display: none;
 }
