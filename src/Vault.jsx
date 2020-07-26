@@ -32,18 +32,17 @@ export const Vault = () => {
       .then(response => {
         if (response.status === 401) {
           setCurrentModalInfo(INVALID_LOGIN_INFO)
-          return
         } else if (response.status !== 200) {
           throw new Error(ERROR_INFO.msg)
+        } else {
+          return Promise.resolve(response.json()).then(data => {
+            setIsUnlocking(true)
+            setTimeout(() => {
+              setIsUnlocking(false)
+              setSuccessMsg(data.msg)
+            }, 5000)
+          })
         }
-        return response.json()
-      })
-      .then(data => {
-        setIsUnlocking(true)
-        setTimeout(() => {
-          setIsUnlocking(false)
-          setSuccessMsg(data.msg)
-        }, 5000)
       }).catch(() => {
         setCurrentModalInfo(ERROR_INFO)
       })
