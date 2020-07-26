@@ -39,11 +39,9 @@ export const Vault = () => {
         } else if (response.statusCode !== 200) {
           setCurrentModalInfo(ERROR_INFO)
         } else {
-          setIsUnlocking(true)
-          setTimeout(() => {
-            setIsUnlocking(false)
-            setSuccessMsg(response.answer.msg)
-          }, 5000)
+          // setIsUnlocking(true)
+          // setIsUnlocking(false)
+          setSuccessMsg(response.answer.msg)
         }
       }).catch(() => {
         setCurrentModalInfo(ERROR_INFO)
