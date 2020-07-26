@@ -31,7 +31,8 @@ export const Vault = () => {
     fetch(`/.netlify/functions/submitAnswer?username=${username}&password=${password}`)
       .then(response => {
         if (response.status === 401) {
-          throw new Error(INVALID_LOGIN_INFO.msg)
+          setCurrentModalInfo(INVALID_LOGIN_INFO)
+          return
         } else if (response.status !== 200) {
           throw new Error(ERROR_INFO.msg)
         }
@@ -41,14 +42,10 @@ export const Vault = () => {
         setIsUnlocking(true)
         setTimeout(() => {
           setIsUnlocking(false)
-          setSuccessMsg(data.answer.msg)
-        })
-      }).catch((error) => {
-        if (error === INVALID_LOGIN_INFO.msg) {
-          setCurrentModalInfo(INVALID_LOGIN_INFO)
-        } else {
-          setCurrentModalInfo(ERROR_INFO)
-        }
+          setSuccessMsg(data.msg)
+        }, 5000)
+      }).catch(() => {
+        setCurrentModalInfo(ERROR_INFO)
       })
   }
 
