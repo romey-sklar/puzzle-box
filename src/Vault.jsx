@@ -34,12 +34,11 @@ export const Vault = () => {
         statusCode: response.status
       }))
       .then(response => {
-        if (response.status === 401) {
+        if (response.statusCode === 401) {
           setCurrentModalInfo(INVALID_LOGIN_INFO)
-        } else if (response.status !== 200) {
+        } else if (response.statusCode !== 200) {
           setCurrentModalInfo(ERROR_INFO)
-        }
-        else {
+        } else {
           setIsUnlocking(true)
           setTimeout(() => {
             setIsUnlocking(false)
