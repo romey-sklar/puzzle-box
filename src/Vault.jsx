@@ -29,22 +29,26 @@ export const Vault = () => {
     event.preventDefault()
 
     fetch(`/.netlify/functions/submitAnswer?username=${username}&password=${password}`)
-      .then(response => ({
-        answer: response.json(),
-        statusCode: response.status
-      }))
       .then(response => {
-        if (response.statusCode === 401) {
-          setCurrentModalInfo(INVALID_LOGIN_INFO)
-        } else if (response.statusCode !== 200) {
-          setCurrentModalInfo(ERROR_INFO)
-        } else {
-          setIsUnlocking(true)
-          setIsUnlocking(false)
-          setSuccessMsg(response.answer.msg)
+        if (response.status === 401) {
+          throw new Error(INVALID_LOGIN_INFO.msg)
+        } else if (response.status !== 200) {
+          throw new Error(ERROR_INFO.msg)
         }
-      }).catch(() => {
-        setCurrentModalInfo(ERROR_INFO)
+        return response.json()
+      })
+      .then(data => {
+        setIsUnlocking(true)
+        setTimeout(() => {
+          setIsUnlocking(false)
+          setSuccessMsg(data.answer.msg)
+        })
+      }).catch((error) => {
+        if (error === INVALID_LOGIN_INFO.msg) {
+          setCurrentModalInfo(INVALID_LOGIN_INFO)
+        } else {
+          setCurrentModalInfo(ERROR_INFO)
+        }
       })
   }
 
