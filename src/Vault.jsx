@@ -50,7 +50,7 @@ export const Vault = () => {
 
   const handleClose = () => setCurrentModalInfo(null)
 
-  const usernameIsCorrect = () => username.toLowerCase() === 'master'
+  const usernameIsCorrect = () => username.toLowerCase() === 'admin'
 
   const currentModal = (
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={!!currentModalInfo} >
@@ -64,23 +64,25 @@ export const Vault = () => {
       </DialogContent>
       {currentModalInfo === PASSWORD_HINT && usernameIsCorrect() ? (<DialogContent dividers>
         <span>Hint: </span>
-        <div className='passwordHint encrypted'>
-          <span>7</span>
-          <span>e</span>
-          <span>i</span>
-          <span>c</span>
-          <span>b</span>
-          <span>c</span>
-          <span>a</span>
-          <span>r</span>
-          <span>n</span>
-          <span>o</span>
-          <span>w</span>
-          <span>b</span>
-          <span>i</span>
-          <span>t</span>
-          <span>F</span>
-        </div>
+        <span className='passwordHint'>
+          <div className='ENCRYPTED'>
+            <span>7</span>
+            <span>e</span>
+            <span>i</span>
+            <span>c</span>
+            <span>b</span>
+            <span>c</span>
+            <span>a</span>
+            <span>r</span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+            <span>b</span>
+            <span>i</span>
+            <span>t</span>
+            <span>F</span>
+          </div>
+        </span>
       </DialogContent>) : null}
       <DialogActions>
         <Button autoFocus onClick={handleClose} color="primary">

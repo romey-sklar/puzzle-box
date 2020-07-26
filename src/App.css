@@ -68,7 +68,7 @@ b {
   }
 }
 
-.passwordHint {
+.passwordHint div {
   display: inline-flex;
   flex-direction: row-reverse;
   color: black;
@@ -76,16 +76,31 @@ b {
   font-size: 18px;
 }
 
-.passwordHint span {
+.passwordHint div span {
   width: 10px;
-  transition: width 1s;
+  opacity: 1;
+  transition: width 5s ease-out, opacity 2.5s 2.5s ease;
 }
 
-.passwordHint:not(.encrypted) span:nth-child(3n+2) {
+.passwordHint :not(.ENCRYPTED) span:nth-child(3n+2) {
   width: 0;
   opacity: 0;
 }
 
-.passwordHint.encrypted {
+.passwordHint .ENCRYPTED {
   flex-direction: row;
+}
+
+.passwordHint .ENCRYPTED span {
+  font-size: 1px;
+  letter-spacing: -1px;
+  color: transparent;
+}
+
+.passwordHint .ENCRYPTED span::after {
+  content: "*";
+  font-size: 16px;
+  font-size: 1rem; /* Maintain relative font-size in browsers that support it */
+  letter-spacing: normal;
+  color: #000;
 }
