@@ -74,11 +74,10 @@ b {
   color: black;
 }
 
-.passwordHint span:nth-child(3n+2) {
+.passwordHint:not(.encrypted) span:nth-child(3n+2) {
   display: none;
 }
 
 .passwordHint.encrypted {
   flex-direction: row;
-  display: none;
 }

@@ -14,8 +14,10 @@ const INVALID_LOGIN_INFO = {
 
 const PASSWORD_HINT = {
   title: 'Access Restricted',
-  msg: 'Password hint access is restricted, since our identity fingerprinting technology has identified you as a potential hacking threat.'
+  msg: 'Password hint has been encrypted since our identity fingerprinting technology has identified you as a potential hacking threat.'
 }
+
+const INVALID_USERNAME_MSG = 'This username does not match an existing account. No hint available.'
 
 export const Vault = () => {
   const [username, setUsername] = useState('')
@@ -51,14 +53,38 @@ export const Vault = () => {
 
   const handleClose = () => setCurrentModalInfo(null)
 
+  const usernameIsCorrect = () => username.toLowerCase() === 'master'
+
   const currentModal = (
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={!!currentModalInfo} >
       <DialogTitle id="customized-dialog-title" onClose={handleClose}>
         {currentModalInfo && currentModalInfo.title}
       </DialogTitle>
       <DialogContent dividers>
-        {currentModalInfo && currentModalInfo.msg}
+        {currentModalInfo === PASSWORD_HINT && !usernameIsCorrect() ?
+          INVALID_USERNAME_MSG :
+          currentModalInfo && currentModalInfo.msg}
       </DialogContent>
+      {currentModalInfo === PASSWORD_HINT && usernameIsCorrect() ? (<DialogContent dividers>
+        <span>Hint: </span>
+        <div className='passwordHint encrypted'>
+          <span>7</span>
+          <span>e</span>
+          <span>i</span>
+          <span>c</span>
+          <span>b</span>
+          <span>c</span>
+          <span>a</span>
+          <span>r</span>
+          <span>n</span>
+          <span>o</span>
+          <span>w</span>
+          <span>b</span>
+          <span>i</span>
+          <span>t</span>
+          <span>F</span>
+        </div>
+      </DialogContent>) : null}
       <DialogActions>
         <Button autoFocus onClick={handleClose} color="primary">
           Close
@@ -110,23 +136,6 @@ export const Vault = () => {
               <Button variant="outlined" onClick={() => {
                 setCurrentModalInfo(PASSWORD_HINT)
               }}>View password hint</Button>
-              <div className='passwordHint encrypted'>
-                <span>7</span>
-                <span>e</span>
-                <span>i</span>
-                <span>c</span>
-                <span>b</span>
-                <span>c</span>
-                <span>a</span>
-                <span>r</span>
-                <span>n</span>
-                <span>o</span>
-                <span>w</span>
-                <span>b</span>
-                <span>i</span>
-                <span>t</span>
-                <span>F</span>
-              </div>
             </div>
             <Button variant="outlined" color="primary" type="submit">
               Submit

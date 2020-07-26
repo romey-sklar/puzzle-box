@@ -1,7 +1,7 @@
 export async function handler(event, context) {
   try {
     const { username, password } = event.queryStringParameters
-    if (username.toLowerCase() === 'Master' && password.toLowerCase() === '0112358') {
+    if (username.toLowerCase() === 'master' && password === '0112358') {
       return {
         statusCode: 200,
         body: JSON.stringify({
