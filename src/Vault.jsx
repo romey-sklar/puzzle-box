@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import logo from "./logo.svg"
+import inspect from "./inspect.png"
 import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core/'
 
 const ERROR_INFO = {
@@ -63,26 +64,31 @@ export const Vault = () => {
           currentModalInfo && currentModalInfo.msg}
       </DialogContent>
       {currentModalInfo === PASSWORD_HINT && usernameIsCorrect() ? (<DialogContent dividers>
-        <span>Hint: </span>
-        <span className='passwordHint'>
-          <div className='ENCRYPTED'>
-            <span>7</span>
-            <span>e</span>
-            <span>i</span>
-            <span>c</span>
-            <span>b</span>
-            <span>c</span>
-            <span>a</span>
-            <span>r</span>
-            <span>n</span>
-            <span>o</span>
-            <span>w</span>
-            <span>b</span>
-            <span>i</span>
-            <span>t</span>
-            <span>F</span>
-          </div>
-        </span>
+        <div style={{ display: 'flex' }}>
+          <span style={{ marginRight: '4px' }}>
+            <img src={inspect} className="inspect" alt="inspect-element-pointer"></img>
+          </span>
+          <span className='passwordHint'>
+            <span style={{ marginRight: '8px' }}>Hint: </span>
+            <div className='ENCRYPTED'>
+              <span>7</span>
+              <span>e</span>
+              <span>i</span>
+              <span>c</span>
+              <span>b</span>
+              <span>c</span>
+              <span>a</span>
+              <span>r</span>
+              <span>n</span>
+              <span>o</span>
+              <span>w</span>
+              <span>b</span>
+              <span>i</span>
+              <span>t</span>
+              <span>F</span>
+            </div>
+          </span>
+        </div>
       </DialogContent>) : null}
       <DialogActions>
         <Button autoFocus onClick={handleClose} color="primary">

@@ -20,12 +20,12 @@ h2 {
   padding: 20px 0;
 }
 
-.header.conditionalBold b {
-  font-weight: 600 !important;
+.header b {
+  font-weight: normal;
 }
 
-b {
-  font-weight: normal;
+.header.conditionalBold b {
+  font-weight: bold;
 }
 
 .vault {
@@ -74,6 +74,12 @@ b {
   color: black;
   font-family: monospace;
   font-size: 18px;
+}
+
+img.inspect {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 }
 
 .passwordHint div span {
