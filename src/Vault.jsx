@@ -18,6 +18,7 @@ const PASSWORD_HINT = {
   msg: 'Password hint has been encrypted since our identity fingerprinting technology has identified you as a potential hacking threat.'
 }
 
+const NO_USERNAME_MSG = 'No username entered. To get a hint, please enter a username.'
 const INVALID_USERNAME_MSG = 'This username does not match an existing account. No hint available.'
 
 export const Vault = () => {
@@ -60,7 +61,7 @@ export const Vault = () => {
       </DialogTitle>
       <DialogContent dividers>
         {currentModalInfo === PASSWORD_HINT && !usernameIsCorrect() ?
-          INVALID_USERNAME_MSG :
+          (!username ? NO_USERNAME_MSG : INVALID_USERNAME_MSG) :
           currentModalInfo && currentModalInfo.msg}
       </DialogContent>
       {currentModalInfo === PASSWORD_HINT && usernameIsCorrect() ? (<DialogContent dividers>
