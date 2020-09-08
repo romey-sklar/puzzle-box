@@ -22,10 +22,11 @@ h2 {
 
 .header b {
   font-weight: normal;
+  transition: font-weight 1s ease-in-out;
 }
 
 .header.conditionalBold b {
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .vault {
