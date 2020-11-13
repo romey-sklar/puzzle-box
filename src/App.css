@@ -4,10 +4,20 @@
   text-align: center;
 }
 
+.browserSupportMsg {
+  background-color: whitesmoke;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
 .content {
   background-color: #282c34;
   color: white;
-  width: 800px;
+  max-width: 800px;
+  width: 75%;
   margin: auto;
 }
 

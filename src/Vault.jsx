@@ -21,7 +21,7 @@ const PASSWORD_HINT = {
 const NO_USERNAME_MSG = 'No username entered. To get a hint, please enter a username.'
 const INVALID_USERNAME_MSG = 'This username does not match an existing account. No hint available.'
 
-export const Vault = () => {
+export const Vault = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [currentModalInfo, setCurrentModalInfo] = useState(null)
@@ -72,21 +72,30 @@ export const Vault = () => {
           <span className='passwordHint'>
             <span style={{ marginRight: '8px' }}>Hint: </span>
             <div className='ENCRYPTED'>
-              <span>7</span>
+              <span></span>
+              <span>m</span>
+              <span>P</span>
+              <span>p</span>
+              <span>j</span>
               <span>e</span>
-              <span>i</span>
-              <span>c</span>
-              <span>b</span>
-              <span>c</span>
-              <span>a</span>
+              <span>7</span>
+              <span>g</span>
               <span>r</span>
-              <span>n</span>
-              <span>o</span>
-              <span>w</span>
-              <span>b</span>
-              <span>i</span>
+              <span>5</span>
+              <span>d</span>
+              <span>3</span>
+              <span>/</span>
+              <span>a</span>
+              <span>y</span>
+              <span>l</span>
+              <span>7</span>
+              <span>.</span>
               <span>t</span>
-              <span>F</span>
+              <span>4</span>
+              <span>i</span>
+              <span>b</span>
+              <span>1</span>
+              {/* https://bit.ly/35r7epP */}
             </div>
           </span>
         </div>
@@ -160,10 +169,14 @@ export const Vault = () => {
     </div>
   )
 
+  const headerText = props.isMac ?
+    <><b>⌘</b> <b>Opt</b>ical <b>C</b>ybersecurity</> :
+    <><b>⇧</b> <b>Control</b>led <b>C</b>ybersecurity</>
+
   return (
     <div className='content'>
       <div className={`header ${currentModalInfo && currentModalInfo === PASSWORD_HINT ? 'conditionalBold' : ''}`}>
-        <b>⌘</b> <b>Opt</b>ical <b>C</b>ybersecurity
+        {headerText}
       </div>
       <div className='body'>
         {successMsg ? successPage : loginContent}
