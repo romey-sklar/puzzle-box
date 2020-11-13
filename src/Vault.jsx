@@ -72,7 +72,7 @@ export const Vault = (props) => {
           <span className='passwordHint'>
             <span style={{ marginRight: '8px' }}>Hint: </span>
             <div className='ENCRYPTED'>
-              <span></span>
+              <span style={{ display: 'none' }}></span>
               <span>m</span>
               <span>P</span>
               <span>p</span>
